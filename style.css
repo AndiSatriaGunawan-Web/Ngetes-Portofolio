@@ -1,0 +1,798 @@
+:root {
+    --bg-color: #050505;
+    --primary-purple: #bc13fe;
+    --primary-blue: #00d2ff;
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* SEMUA tulisan di web pakai font ini sekarang */
+    font-family: 'Share Tech Mono', monospace !important;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* =========================================
+   NAVIGASI (VERSI LENGKAP + LURUS)
+   ========================================= */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; /* Biar lebarnya pas sama konten */
+    min-width: fit-content; /* Mengikuti isi */
+    height: 70px;
+    padding: 0 50px; /* Padding kiri kanan diperlebar */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 100px;
+    display: flex;
+    justify-content: center; /* Kunci semua di tengah */
+    align-items: center;
+    gap: 60px; /* Jarak aman antara Logo dan Menu */
+    z-index: 1000;
+}
+
+nav:hover {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+}
+
+.nav-list {
+    display: flex;
+    align-items: center; /* Menyejajarkan item list */
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list li a {
+    font-family: 'Share Tech Mono', monospace;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    line-height: 1; /* Menetralkan posisi teks */
+}
+
+.nav-list li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-list li a:hover {
+    color: var(--primary-blue);
+    text-shadow: 0 0 10px var(--primary-blue);
+}
+
+.nav-list li a:hover::after {
+    width: 80%;
+}
+
+.logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #fff;
+    /* Mengunci teks agar tidak bisa dipisah atau ganti baris */
+    display: inline-flex; 
+    align-items: center;
+    white-space: nowrap; 
+    flex-shrink: 0;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.logo span {
+    color: var(--primary-blue); /* Bonus: LAB jadi warna biru neon biar keren */
+    margin-left: 2px; /* Jarak tipis antara FUTURE dan LAB */
+    display: inline-block;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a0b2e 0%, #050505 100%);
+}
+
+.hero h1 {
+    font-size: 5rem;
+    background: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.btn-neon {
+    padding: 15px 45px;
+    background: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.4s;
+    margin-top: 30px;
+    /* Efek potong pojok (Cyberpunk look) */
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.btn-neon:hover {
+    background: var(--primary-blue);
+    color: #000;
+    box-shadow: 0 0 35px var(--primary-blue);
+    transform: scale(1.05);
+}
+
+/* Garis dekorasi kecil di pojok tombol */
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-purple);
+    box-shadow: 0 0 10px var(--primary-purple);
+}
+
+/* =========================================
+   WORK SECTION
+   ========================================= */
+.work-section {
+    padding: 100px 10%;
+    min-height: 100vh;
+}
+
+.section-title {
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--primary-blue);
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+    margin-bottom: 50px;
+    
+    /* INI KUNCINYA SUPAYA DI TENGAH TERUS */
+    display: block;
+    width: 100%;
+    text-align: center; /* Memaksa teks ke tengah */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Biar di mobile nggak kegedean dan tetep center */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+        text-align: center; /* Double check untuk mobile */
+    }
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.5s;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Kode Sempurnakan Project Card yang tadinya ada di bawah, saya gabung ke sini */
+.project-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(188, 19, 254, 0.05);
+    border: 1px solid var(--primary-blue);
+    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2);
+}
+
+.card-content {
+    padding: 40px;
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-card {
+    text-decoration: none;
+    padding: 10px 20px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-card:hover {
+    background: var(--primary-blue);
+    box-shadow: 0 0 15px var(--primary-blue);
+}
+
+/* =========================================
+   FOOTER SECTION
+   ========================================= */
+.cyber-footer {
+    position: relative;
+    padding: 80px 10% 40px;
+    background: #000;
+    overflow: hidden;
+    margin-top: 100px;
+    border-top: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+.footer-glow {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--primary-purple) 0%, transparent 70%);
+    opacity: 0.3;
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 15px var(--primary-blue);
+    background: rgba(0, 210, 255, 0.05);
+}
+
+.copyright {
+    font-size: 0.7rem;
+    color: #555;
+    margin-top: 50px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   CURSOR CUSTOM
+   ========================================= */
+html, body {
+    cursor: none;
+}
+
+.cursor {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+}
+
+.cursor-follower {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-purple);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.15s ease-out, background 0.3s, border 0.3s;
+    box-shadow: 0 0 15px var(--primary-purple);
+}
+
+.cursor-active {
+    transform: scale(1.5);
+    background: rgba(188, 19, 254, 0.2);
+    border: 2px solid var(--primary-blue);
+}
+
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
+.reveal {
+    visibility: hidden;
+}
+
+.about-section {
+    padding: 100px 10%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-img {
+    position: relative;
+}
+
+.img-frame {
+    position: relative;
+    border: 2px solid var(--primary-blue);
+    padding: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.img-frame img {
+    width: 100%;
+    filter: grayscale(100%) contrast(1.2);
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.img-frame:hover img {
+    filter: grayscale(0%) contrast(1);
+}
+
+.frame-glow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 50px rgba(0, 210, 255, 0.5);
+    pointer-events: none;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    font-weight: 500; /* Tidak terlalu tipis, tidak terlalu tebal */
+    line-height: 1.7;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-align: justify;
+}
+
+/* Khusus untuk tampilan mobile agar teks tetap di tengah */
+@media (max-width: 768px) {
+    .about-text p {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
+
+.about-text p span {
+    color: var(--primary-purple);
+    font-weight: 800;
+    text-shadow: 0 0 10px var(--primary-purple);
+}
+
+.skill-tag {
+    padding: 8px 20px;
+    background: rgba(188, 19, 254, 0.05); /* Ungu transparan tipis */
+    color: var(--primary-purple);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid var(--primary-purple);
+    position: relative;
+    transition: 0.3s;
+    cursor: default;
+    
+    /* Bikin pojokan kepotong (Bentuk Chipset) */
+    clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
+    
+    /* Tambahan glow halus */
+    box-shadow: inset 0 0 10px rgba(188, 19, 254, 0.2);
+}
+
+.skill-tag:hover {
+    background: var(--primary-purple);
+    color: #fff;
+    box-shadow: 0 0 20px var(--primary-purple);
+    transform: translateY(-3px);
+}
+
+/* Tambahin dekorasi titik kecil di samping tag (Opsional tapi keren) */
+.skills-mini {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Biar aman kalau di layar kecil banget */
+}
+
+/* =========================================
+   SKILLS SECTION
+   ========================================= */
+.skills-section {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.skills-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.skill-item {
+    position: relative;
+    padding: 10px;
+}
+
+.skill-icon {
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.03); /* Background gelap transparan */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Border tipis banget */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s ease;
+    margin: 0 auto 15px;
+    overflow: visible; /* Biar garis pojok nggak kepotong */
+}
+
+/* Styling Gambar Logo di Dalam */
+.skill-icon img {
+    width: 55%;
+    height: auto;
+    filter: grayscale(1) brightness(0.8); /* Awalnya abu-abu & redup */
+    transition: 0.4s ease;
+}
+
+/* Efek Garis Pojok L-Shape (Pojok Kiri Atas) */
+.skill-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+    /* Warnanya akan kita atur per icon di bawah */
+}
+
+/* Garis pojok kanan bawah */
+.skill-icon::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+/* Pewarnaan Per Module */
+.skill-icon.html::before, .skill-icon.html::after { color: #e34c26; }
+.skill-icon.css::before, .skill-icon.css::after { color: #264de4; }
+.skill-icon.js::before, .skill-icon.js::after { color: #f7df1e; }
+.skill-icon.react::before, .skill-icon.react::after { color: #61dbfb; }
+
+/* HOVER EFFECT */
+.skill-item:hover .skill-icon {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-10px) rotate(3deg); /* Efek melayang & miring dikit */
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+}
+
+.skill-item:hover .skill-icon img {
+    filter: grayscale(0) brightness(1.2); /* Logo jadi berwarna & terang */
+    transform: scale(1.1);
+}
+
+.skill-icon:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-10px) rotate(2deg); /* Ada sedikit rotasi biar dinamis */
+    box-shadow: 0 0 30px currentColor;
+}
+
+.html { border-color: #e34c26; color: #e34c26; box-shadow: 0 0 20px rgba(227, 76, 38, 0.2); animation-delay: 0s; }
+.css { border-color: #264de4; color: #264de4; box-shadow: 0 0 20px rgba(38, 77, 228, 0.2); animation-delay: 0.5s; }
+.js { border-color: #f7df1e; color: #f7df1e; box-shadow: 0 0 20px rgba(247, 223, 30, 0.2); animation-delay: 1s; }
+.react { border-color: #61dbfb; color: #61dbfb; box-shadow: 0 0 20px rgba(97, 219, 251, 0.2); animation-delay: 1.5s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.skill-item span {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin-top: 10px;
+}
+
+/* =========================================
+   CONTACT SECTION
+   ========================================= */
+.contact-section { padding: 100px 10%; }
+
+.contact-panel {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--primary-blue);
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.1);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--primary-blue);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.dot { width: 8px; height: 8px; background: var(--primary-purple); border-radius: 50%; }
+
+.panel-header p { font-size: 0.7rem; color: var(--primary-blue); letter-spacing: 2px; }
+
+.input-group { margin-bottom: 20px; text-align: left; }
+
+.input-group label {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--primary-purple);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    padding: 12px;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+}
+
+.input-group input:focus { border-color: var(--primary-purple); box-shadow: 0 0 10px var(--primary-purple); }
+
+.btn-transmit {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 3px;
+    transition: 0.3s;
+}
+
+.btn-transmit:hover {
+    background: var(--primary-blue);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary-blue);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+/* Update bagian ini di CSS kamu */
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* Tambahkan ini supaya judul About Me ikut ke tengah di mobile */
+    .about-text .section-title {
+        text-align: center !important; 
+        margin: 0 auto 30px auto;
+    }
+
+    .skills-mini {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .hero h1 { font-size: 3rem; }
+    
+    nav {
+        width: 90%;
+        border-radius: 20px;
+        justify-content: space-between;
+    }
+    
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--primary-blue);
+        text-align: center;
+    }
+
+    .nav-list.active { display: flex; }
+    .nav-list li { padding: 20px 0; }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--primary-blue);
+        transition: 0.3s;
+    }
+
+    .about-container, .project-grid, .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .cursor, .cursor-follower { display: none; }
+    html, body { cursor: auto; }
+}
+
+/* Efek Glitch Animasi */
+@keyframes cyber-glitch {
+    0% {
+        clip-path: inset(20% 0 50% 0);
+        transform: translate(-5px, -2px);
+    }
+    20% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(5px, 2px);
+    }
+    40% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(-5px, 2px);
+    }
+    60% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(5px, -2px);
+    }
+    80% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translate(-2px, 5px);
+    }
+    100% {
+        clip-path: inset(0% 0 0% 0);
+        transform: translate(0);
+    }
+}
+
+/* Terapkan Glitch saat Skill Item di-hover */
+.skill-item:hover .skill-icon img {
+    /* Animasi glitch berjalan sangat cepat (0.2 detik) */
+    animation: cyber-glitch 0.1s linear infinite;
+    
+    /* Tambahan efek bayangan warna tajam (RGB Split) */
+    filter: drop-shadow(2px 0 0 #ff00ff) drop-shadow(-2px 0 0 #00ffff) grayscale(0) brightness(1.2);
+}
+
+/* Hilangkan animasi kalau kursor nggak di atasnya */
+.skill-icon img {
+    animation: none;
+}
